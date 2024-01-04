@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { ArticleModule } from './article/article.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { ProfileModule } from './profile/profile.module';
-import { TagModule } from './tag/tag.module';
 import { UserModule } from './user/user.module';
 
 dotenv.config();
@@ -21,10 +23,13 @@ dotenv.config();
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..'),
+    }),
+    CloudinaryModule,
     ArticleModule,
     UserModule,
     ProfileModule,
-    TagModule,
   ],
   controllers: [AppController],
 })

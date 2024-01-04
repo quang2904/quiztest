@@ -1,35 +1,3 @@
-*User
-id, password, username, fullname, email, avatar, status
-*Follower
-Id, own, follower, create (followerId, followingId)
-
-*Notify
-id, text
-
-*Post
-id, userID, text, created, updated
-*Like
-Id, PostID, UserID, created, status
-*Comment
-Id, PostId, UserID, Text, Created
-
-*Profile
-search by user, follow, unFollow, me,
-
-*Post
-listPost, Feed, saver 
-listComment
-like
-
-
-
-
-
-
-
-
-*Feed //
-Id, consumerId, postId, author, create
 *Emotion
 Media, Created, By
 *Album

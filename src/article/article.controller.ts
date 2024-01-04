@@ -7,7 +7,12 @@ import {
   Post,
   Put,
   Query,
+  UploadedFile,
+  UseInterceptors,
+  ParseFilePipe,
+  MaxFileSizeValidator,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
 import { User } from '../user/user.decorator';
 import { ArticleRO, ArticlesRO, CommentsRO } from './article.interface';
@@ -47,6 +52,19 @@ export class ArticleController {
     @Body(new ValidationPipe()) articleData: CreateArticleDto,
   ) {
     return this.articleService.create(userId, articleData);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [new MaxFileSizeValidator({ maxSize: 1000 })],
+      }),
+    )
+    file: Express.Multer.File,
+  ) {
+    console.log(file);
   }
 
   @Put(':slug')
