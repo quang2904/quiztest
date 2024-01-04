@@ -1,6 +1,0 @@
-*Emotion
-Media, Created, By
-*Album
-ID, AlbumName, AuthorId, AlbumMedia, Created, modified
-*Media
-PublicID, Width, Height, Format, Bytes, URL
