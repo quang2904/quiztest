@@ -8,6 +8,7 @@ import { ArticleModule } from './article/article.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { ProfileModule } from './profile/profile.module';
 import { UserModule } from './user/user.module';
+import { EmotionModule } from './emotion/emotion.module';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ dotenv.config();
     ArticleModule,
     UserModule,
     ProfileModule,
+    EmotionModule,
   ],
   controllers: [AppController],
 })
